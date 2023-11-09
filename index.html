@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html>
     <head>
-
-    </head>
-    <body>    
         <style>
+            body {
+                font-family: "Segoe UI", "Segoe UI Web (West European)", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+            }
             #container {
                 display: grid;
                 grid-template-areas: 
                     "header header header header header"
                     "znamky znamky kalkulace kalkulace kalkulace";
+                gap: 10px;
             }
             .container_header {
                 grid-area: header;
@@ -20,14 +21,45 @@
             }
             .container_calc {
                 grid-area: kalkulace;
+                background-color: rgb(3, 174, 254);
+                color: white;
+                border-radius: 5px;
+                text-align: center;
+            }
+
+            .container_znamky td {
+                background-color: rgb(3, 174, 254);
+                color: white;
+                padding: 10px;
+                padding-top: 15px;
+                padding-bottom: 15px;
+                border-radius: 5px;
+                font-weight: bold;
+            }
+            #tabulka_znamky {
+                display: grid;
+                grid-template-columns: max-content auto;
+                gap: 5px;
+                
+            }
+            #tabulka_znamky div {
+                background-color: rgb(3, 174, 254);
+                color: white;
+                padding: 10px;
+                padding-top: 15px;
+                padding-bottom: 15px;
+                border-radius: 5px;
+                font-weight: bold;
             }
         </style>
+    </head>
+    <body>    
         <div id="container">
             <div class="container_header">
                 <h1>Známkování</h1>
             </div>
             <div class="container_znamky">
-                <table>
+                <!-- <table>
                     <tr>
                         <td>1</td>
                         <td>100% - 85%</td>
@@ -48,14 +80,26 @@
                         <td>5</td>
                         <td>39% - 0%</td>
                     </tr>
-                </table>
+                </table> -->
+                <div id="tabulka_znamky">
+                        <div>1</div>
+                        <div>100% - 85%</div>
+                        <div>2</div>
+                        <div>84% - 70%</div>
+                        <div>3</div>
+                        <div>69% - 55%</div>
+                        <div>4</div>
+                        <div>54% - 40%</div>
+                        <div>5</div>
+                        <div>39% - 0%</div>
+                </div>
             </div>
             <div class="container_calc">
                 <h2>Výpočet známky</h2>
                 <p>Získané body</p>
-                <input type="number" id="znamka_body">
+                <input type="number" title="Počet bodů získaných při testu" id="znamka_body">
                 <p>Celkem bodů</p>
-                <input type="number" id="znamka_celkem_body">
+                <input type="number" title="Celkový počet bodů" id="znamka_celkem_body">
                 <br>
                 <button onclick="calcZnamka()">Vypočítej</button>
                 <p>Výsledná známka: </p><span id="output_znamka"></span>
