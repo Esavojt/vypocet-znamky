@@ -16,6 +16,10 @@
                 grid-area: header;
                 text-align: center;
             }
+            .container_header h1 {
+                margin-top: 10px;
+                margin-bottom: 5px;
+            }
             .container_znamky {
                 grid-area: znamky;
             }
@@ -155,7 +159,10 @@
                     function calcZnamka() {
                         let body = document.getElementById("znamka_body").value;
                         let celkem = document.getElementById("znamka_celkem_body").value;
+                        
                         let procenta = ((body / celkem) * 100).toFixed(0);
+
+                        if(body === "" || celkem === "") procenta = NaN;
 
                         console.log(`${body}/${celkem} ${procenta}%`);
 
